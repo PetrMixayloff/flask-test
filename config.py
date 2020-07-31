@@ -1,19 +1,5 @@
 # coding: utf-8
-
 import os
-
-basedir = os.path.abspath(os.path.dirname(__file__))
-
-db_params = dict(user='db_user',
-                 passw='12345678',
-                 host='localhost',
-                 port=5432)
-
-database_name = 'db_name'
-local_base = 'postgresql://{user}:{passw}@{host}:{port}/'.format(user=db_params['user'],
-                                                                 passw=db_params['passw'],
-                                                                 host=db_params['host'],
-                                                                 port=db_params['port'])
 
 
 class BaseConfig:
@@ -23,18 +9,23 @@ class BaseConfig:
     DEBUG = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
-    SQLALCHEMY_DATABASE_URI = local_base + database_name
+    USER = 'db_parse_user'
+    PASSWORD = 'db_parse_user_pass'
+    HOST = 'localhost'
+    PORT = 5432
+    DB_NAME = 'db_parse'
+    SQLALCHEMY_DATABASE_URI = local_base = f'postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}'
+    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
     RESTPLUS_MASK_HEADER = False
     RESTPLUS_MASK_SWAGGER = False
     FILE_UPLOAD_FOLDER = "files"
     SECRET_TO_SIGN_TASK = '123456'
-    CELERY_BROKER_URL = 'redis://localhost:6379/0'
-    CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 
 class Development(BaseConfig):
     """Development configuration."""
     DEBUG = True
+    ASSETS_DEBUG = True
 
 
 class Production(BaseConfig):

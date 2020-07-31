@@ -18,11 +18,8 @@ if not os.path.exists('./static'):
 app = Flask(__name__, static_url_path='/static/', static_folder='../static')
 CORS(app)
 
-app_settings = os.getenv(
-    'API_SETTINGS',
-    'config.Development'
-)
-app.config.from_object(app_settings)
+
+app.config.from_object('config.Development')
 
 db_session = db = SQLAlchemy(app)
 

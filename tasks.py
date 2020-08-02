@@ -1,5 +1,9 @@
 import requests
-from utils import getById
+
+
+# engine = create_engine(BaseConfig.SQLALCHEMY_DATABASE_URI)
+# Session = sessionmaker(bind=engine)
+# db_session = Session()
 
 
 HEADERS = {
@@ -8,11 +12,11 @@ HEADERS = {
 TIMEOUT = 5
 
 
-def parsing(url: str, task_id: str, model, db_session):
+def parsing(url: str, task_id: str):
     r = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     with open(f'../static/{task_id}.html', 'w') as f:
         f.write(r.text)
-    task = getById(model, task_id, db_session.session)
-    task.status = 'done'
-    db_session.session.query(model).filter(model.id == task.id).update(task.__dict__)
-    db_session.session.commit()
+    # task = getById(Task, task_id, db_session.session)
+    # task.status = 'done'
+    # db_session.session.query(Task).filter(Task.id == task.id).update(task.__dict__)
+    # db_session.session.commit()

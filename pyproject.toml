@@ -7,8 +7,6 @@ authors = ["Petr <p>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 flask = "^1.1.2"
-flask_cors = "^3.0.8"
-flask_restplus = "^0.13.0"
 flask_sqlalchemy = "^2.4.4"
 rq = "^1.5.0"
 requests = "^2.24.0"
@@ -18,6 +16,7 @@ alembic = "^1.4.2"
 flask-migrate = "^2.5.3"
 flask-script = "^2.0.6"
 psycopg2-binary = "^2.8.5"
+flask-restx = "^0.2.0"
 
 [tool.poetry.dev-dependencies]
 

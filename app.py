@@ -27,7 +27,7 @@ results_ns = api.namespace('results', description='Get results')
 
 @parser_ns.route('/post/<string:url>')
 @parser_ns.param('url', 'URL для парсинга (example.com)')
-class PostParseTask(Resource):
+class ParseTask(Resource):
     def post(self, url):
         """Добавление нового URL в задания для парсинга. URL в формате example.com"""
 
@@ -38,7 +38,7 @@ class PostParseTask(Resource):
 
 @parser_ns.route('/<string:id>')
 @parser_ns.param('id', 'Идентификатор записи')
-class ParsingResult(Resource):
+class ParseResult(Resource):
 
     def get(self, id):
         """Получение результата парсинга по идентификатору"""

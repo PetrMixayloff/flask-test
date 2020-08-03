@@ -26,9 +26,7 @@ results_ns = api.namespace('results', description='Get results')
 
 
 @parser_ns.route('/post/<string:url>')
-@parser_ns.param('url', 'URL для парсинга')
-@parser_ns.response(200, 'Ok')
-@parser_ns.response(500, 'Server error')
+@parser_ns.param('url', 'URL для парсинга (example.com)')
 class PostParseTask(Resource):
     def post(self, url):
         """Добавление нового URL в задания для парсинга. URL в формате example.com"""

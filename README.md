@@ -1,5 +1,9 @@
-`CREATE DATABASE db_parse;`
+Тестовое приложение на фласк для парсинга сайтов с использование очереди задач redis queue.
 
-`CREATE USER db_parse_user WITH PASSWORD 'db_parse_user_pass';`
+Установка redis: `sudo apt-get install redis-server`
 
-`GRANT ALL PRIVILEGES ON DATABASE db_parse TO db_parse_user;`
+Запуск приложения `python3 app.py`
+
+Запуск воркера редис `python3 worker.py`
+
+Документация в swagger ui http://0.0.0.0:8888/
